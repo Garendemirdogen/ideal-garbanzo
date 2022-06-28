@@ -71,7 +71,7 @@ var generatePassword = function(){
 
       newPassword = "";
 
-// Characters user selects after prompts
+// Characters user selects after prompts 
 
       if (lowercaseConfirm === true) {
 
@@ -83,7 +83,10 @@ var generatePassword = function(){
           selectedCharacters = selectedCharacters.concat(alphabetUpper);
       };
 
-      if ()
+      if (numberConfirm === true) {
+
+          selectedCharacters = selectedCharacters.concat(number);
+               }
 
 
 
