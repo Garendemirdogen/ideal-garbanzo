@@ -86,10 +86,12 @@ var generatePassword = function(){
       if (numberConfirm === true) {
 
           selectedCharacters = selectedCharacters.concat(number);
-               }
+      };
+      
+      if (specialConfirm === true) {
 
-
-
+          selectedCharacters = selectedCharacters.concat(special);
+      };
           
   }
 };
