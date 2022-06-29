@@ -9,14 +9,38 @@ function writePassword() {
 
   var newPassword;
 
+// Generate password function
 
-// Global variables
+function generatePassword() {
 
-var lengthConfirm;
-var lowercaseConfirm;
-var uppercaseConfirm;
-var numberConfirm;
-var specialConfirm;
+  // Declaration of varaible to prompt user to select a password length between 8 and 128 characters
+  var lengthConfirmprompt = window.prompt("Please select the length of your password. Choose between 8 and 128 characters");
+
+  // Converts a string into a number
+   var lengthConfirm = parseInt(lengthConfirmprompt); 
+
+      if (lengthConfirmprompt === "" || lengthConfirm <= 7 || lengthConfirm >= 129) {
+
+// Alert user to enter a number between 8 and 128 if no input is returned
+        window.alert("Please enter a number between 8 and 128!");
+
+          return generatePassword();
+    }
+
+      else if (lengthConfirmprompt === null) {
+// Return user to the generate password window
+        window.alert("You have selected cancel");
+    }
+    
+  
+// Prompts the user what type of character the user would like to use in the password
+  var lowercaseConfirm = confirm("If you would like lowercase characters in your password, click OK.");
+      
+  var uppercaseConfirm = confirm("If you would like uppercase characters in your password, click OK.");
+      
+  var numberConfirm = confirm("If you would like numbers in your password, click OK.");
+      
+  var specialConfirm = confirm("If you would like special characters in your password, click OK.");
 
 
 // Lowercase characters
@@ -31,46 +55,14 @@ var number = "123456789";
 // Special characters
 var special = "!#$%&'()*+,-./:;<=>?@[\]^{|}`_~";
 
-// Generate password function
-
-var generatePassword = function(){
-
-  // Declaration of varaible to prompt user to select a password length between 8 and 128 characters
-  var lengthConfirmprompt = window.prompt("Please select the length of your password. Choose between 8 and 128 characters");
-
-  // Converts a string into a number
-    lengthConfirm = parseInt(lengthConfirmprompt); 
-
-      if (lengthConfirmprompt === "" || lengthConfirm <= 8 || lengthConfirm >= 128) {
-
-// Alert user to enter a number between 8 and 128 if no input is returned
-        window.alert("Please enter a number between 8 and 128!");
-
-          return generatePassword();
-    }
-
-      else if (lengthConfirmprompt === null) {
-// Return user to the generate password window
-        window.alert("You have selected cancel");
-    }
-    
-      else {
-// Prompts the user what type of character the user would like to use in the password
-      lowercaseConfirm = confirm("If you wwould like lowercase characters in your password, click OK.");
-      
-        uppercaseConfirm = confirm("If you would like uppercase characters in your password, click OK.");
-      
-          numberConfirm = confirm("If you would like numbers in your password, click OK.");
-      
-            specialConfirm = confirm("If you would like special characters in your password, click OK.");
 
 //  Empty string to store the types of characters the user wants to use
-
-      var selectedCharacters = "";
+var selectedCharacters = "";
 
 // Empty string to create new password 
 
-      newPassword = "";
+newPassword = "";
+
 
 // Characters user selects after prompts 
 
@@ -94,14 +86,11 @@ var generatePassword = function(){
           selectedCharacters = selectedCharacters.concat(special);
       };
           
-  }
-
-
 // Randomly selected characters generates a password of selected characters and selected length for the user
 
-  for (i = 0; i < length; i++) {
+  for (i = 0; i < lengthConfirm; i++) {
 
-    var charType = selectedCharacters.charAt(Math.floor(Math.random() * selectedCharacters.length));
+    var charType = selectedCharacters.charAt(Math.floor(Math.random() * selectedCharacters.lengthConfirm));
 
       newPassword = newPassword + charType;
   };
@@ -109,11 +98,13 @@ var generatePassword = function(){
 };
 
 // Function call
-generatePassword();
+generatePassword()
 
 
 passwordText.value = newPassword;
 };
+
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
