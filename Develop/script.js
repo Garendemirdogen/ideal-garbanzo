@@ -9,6 +9,7 @@ function writePassword() {
 
   var newPassword;
 
+  
 // Generate password function
 
 function generatePassword() {
@@ -57,6 +58,7 @@ var special = "!#$%&'()*+,-./:;<=>?@[\]^{|}`_~";
 
 
 //  Empty string to store the types of characters the user wants to use
+
 var selectedCharacters = "";
 
 // Empty string to create new password 
