@@ -14,26 +14,24 @@ function writePassword() {
 
 function generatePassword() {
 
-  // Declaration of varaible to prompt user to select a password length between 8 and 128 characters
-  var lengthConfirmprompt = window.prompt("Please select the length of your password. Choose between 8 and 128 characters");
-
-  // Converts a string into a number
-   var lengthConfirm = parseInt(lengthConfirmprompt); 
-
-      if (lengthConfirmprompt === "" || lengthConfirm <= 7 || lengthConfirm >= 129) {
-
-// Alert user to enter a number between 8 and 128 if no input is returned
-        window.alert("Please enter a number between 8 and 128!");
-
-          return generatePassword();
-    }
-
-      else if (lengthConfirmprompt === null) {
-// Return user to the generate password window
-        window.alert("You have selected cancel");
-    }
-    
+// Ask the user how many characters they want the password to be
+var length = prompt("How many characters would you like your password to contain? Please choose a number between 8 and 128.");
+       
+// If user inputs anything outside or requested range prompt will appear 
+  if (length < 8 || length > 128) {
+         
+    alert("Minimum/Maximum character criteria was not met. Please choose a number between 8 and 128 characters.");
+         
+    length = prompt("How many characters would you like your password to contain? Please pick a number between 8 and 128.");
+       };
   
+  if (isNaN(length) === true) {
+      
+    alert("Please choose a number between 8 and 128 characters.");
+         
+    length = prompt("How many characters would you like your password to contain? Please pick a number between 8 and 128.");
+       };
+   
 // Prompts the user what type of character the user would like to use in the password
   var lowercaseConfirm = confirm("If you would like lowercase characters in your password, click OK.");
       
@@ -90,9 +88,9 @@ newPassword = "";
           
 // Randomly selected characters generates a password of selected characters and selected length for the user
 
-  for (i = 0; i < lengthConfirm; i++) {
+  for (i = 0; i < length; i++) {
 
-    var charType = selectedCharacters.charAt(Math.floor(Math.random() * selectedCharacters.lengthConfirm));
+    var charType = selectedCharacters.charAt(Math.floor(Math.random() * selectedCharacters.length));
 
       newPassword = newPassword + charType;
   };
@@ -102,7 +100,7 @@ newPassword = "";
 // Function call
 generatePassword()
 
-
+// New password will appear in text box
 passwordText.value = newPassword;
 };
 
